@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Strings and Numbers</title>
+</head>
+<body>
+    <!-- A string is a sequence of characters, and it can be enclosed in single quotes, double quotes, or backticks. -->
+    <!-- A number is a numeric value, which can be an integer or a floating-point number. -->
+
+    <p id="outputText"></p>
+
+    <script>
+        var text = "34";
+        var text2 = "5";
+
+        var num1 = stringToNumber(text); // Convert the string "4" to a number.
+        var num2 = stringToNumber(text2); // Convert the string "5" to a number.
+
+        if (isNaN(num1) || isNaN(num2)) {
+            document.getElementById("outputText").innerHTML = "One or both of the inputs are not valid numbers.";
+        } else {
+            var number = num1 + num2; // Add the two numbers together.
+            document.getElementById("outputText").innerHTML = "The sum of " + num1 + " and " + num2 + " is: " + number + ".";
+        }
+
+        
+        function stringToNumber(text) {
+            // This function converts a string to a number.
+            return parseInt(text);
+        }
+    </script>
+</body>
+</html>

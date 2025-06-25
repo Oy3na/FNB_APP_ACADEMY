@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td colspan="4">
+                <input type="text" id="display" value="0"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="digit" onclick="digitBtnPressed(7)">7</td>
+            <td class="digit" onclick="digitBtnPressed(8)">8</td>
+            <td class="digit" onclick="digitBtnPressed(9)">9</td>
+            <td class="operator" onclick="operatorBtnPressed('*')">x</td>
+        </tr>
+        <tr>
+            <td class="digit" onclick="digitBtnPressed(4)">4</td>
+            <td class="digit" onclick="digitBtnPressed(5)">5</td>
+            <td class="digit" onclick="digitBtnPressed(6)">6</td>
+            <td class="operator" onclick="operatorBtnPressed('-')">-</td>
+        </tr>
+        <tr>
+            <td class="digit" onclick="digitBtnPressed(1)">1</td>
+            <td class="digit" onclick="digitBtnPressed(2)">2</td>
+            <td class="digit" onclick="digitBtnPressed(3)">3</td>
+            <td class="operator" onclick="operatorBtnPressed('+')">+</td>
+        </tr>
+        <tr>
+            <td class="digit" colspan="2" onclick="digitBtnPressed(0)">0</td>
+            <td class="ACbutton" onclick="clearDisplay()">AC</td>
+            <td class="operator" onclick="operatorBtnPressed('/')">/</td>
+        </tr>
+        <tr>
+            <td class="operator" colspan="4" onclick="calculateResult()">=</td>
+        </tr>
+    </table>
+
+    <script> 
+        var newLine = true; // its a boolean variable. determines if the next digit should start a new line or not.
+        var value1;
+        var currentOperator;
+
+        // Function to handle digit button presses
+        function digitBtnPressed(digit){
+
+            if (newLine) {
+                document.getElementById("display").value = digit;
+                newLine = false;
+            } else {
+                var currentDisplay = document.getElementById("display").value;
+                document.getElementById("display").value = currentDisplay + digit;
+            }
+        }
+
+        // Function to clear the display
+        function clearDisplay() {
+            document.getElementById("display").value = "0";
+            newLine = true; // Reset the new line flag
+        }
+
+        // Function to handle operator button presses
+        function operatorBtnPressed(operator) {
+            currentOperator = operator;
+            value1 = parseFloat(document.getElementById("display").value);
+            newLine = true; // Set newLine to true so the next digit starts a new line
+        }
+
+        // Function to calculate the result
+        function calculateResult() {
+            var value2 = parseFloat(document.getElementById("display").value);
+            var result;
+
+            if (isNaN(value1) || isNaN(value2)) {
+                alert("Invalid input. Please enter valid numbers.");
+                return;
+            }
+
+            switch (currentOperator) {
+                case '+':
+                    result = value1 + value2;
+                    break;
+                case '-':
+                    result = value1 - value2;
+                    break;
+                case '*':
+                    result = value1 * value2;
+                    break;
+                case '/':
+                    if (value2 === 0) {
+                        alert("Cannot divide by zero.");
+                        return;
+                    }
+                    result = value1 / value2;
+                    break;
+                default:
+                    alert("Invalid operator.");
+                    return;
+            }
+
+            document.getElementById("display").value = result;
+            newLine = true; // Reset the new line flag
+        }
+
+        function equalsBtnPressed() {
+            calculateResult();
+        }
+    </script>
+</body>
+</html>

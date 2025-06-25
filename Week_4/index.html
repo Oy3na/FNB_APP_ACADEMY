@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <h1 id="captain"></h1>
+        <p id="sarge"></p>
+        <p id="sarge2"></p>
+    
+        <script>
+            //LESSON 2
+            var text1; // This line declares a variable named text1, but it is not used in the code.
+            var text2;
+            var text3;
+
+            //LESSON 3
+            var numA = 7 ; // This line declares a variable named numA and assigns it the value 7.
+            var numB = 10; // This line declares a variable named numB and assigns it the value 10.
+
+            text1 = "Hello Everyone"; // This line assigns the string "Hello Everyone" to the variable text1.
+            text2 = "Learning JavaScript is fun!"; // This line assigns the string "Learning JavaScript is fun!" to the variable text2
+            text3 = " I love this course!"; // This line assigns the string "I love this course!" to the variable text3
+            document.getElementById("captain").innerHTML = text1; // This line sets the text of the element with id "captain" to the value of text1.
+            document.getElementById("sarge").innerHTML = text2 + text3; // This line sets the text of the element with id "sarge" to the value of text2.
+            document.getElementById("sarge2").innerHTML = numA + " x " + numB + " = " + (numA * numB); // This line sets the text of the element with id "sarge2" to the multiplication of numA and numB, formatted as a string.
+
+            //LESSON 1
+            //document.getElementById("captain").innerHTML = ("This is JavaScript"); // This line sets the text of the element with id "captain" replacing the content with "This is JavaScript".
+            //document.getElementById("sarge").innerHTML = ("This is a simple web page to demonstrate HTML structure."); // This line sets the text of the element with id "sarge" replacing the content with "This is a simple web page to demonstrate HTML structure."
+            // when putting a number without quotes, it will be treated as a number, not a string.
+        </script>
+</body>
+</html>

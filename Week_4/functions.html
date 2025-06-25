@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="heading" onclick="changeText()">JavaScript Functions</h1> <!-- This is a heading that changes its text when clicked. -->
+    <p id="addition"></p>
+    
+
+    <script> 
+        
+        
+        function changeText() {
+            if(document.getElementById("heading").innerHTML=='JavaScript Functions'){
+                document.getElementById("heading").innerHTML='gwa nyewa'
+            } else{
+                document.getElementById("heading").innerHTML='JavaScript Functions'
+            } // This function changes the text of the heading element with id "heading" when it is clicked.
+        }
+        //    LESSON 7: FUNCTIONS
+        //you can also pass parameters to functions to make them more dynamic.
+        //addNumbers(5, 10); // This calls the addNumbers function with 5 and 10 as arguments, which will display the sum in the paragraph with id "addition".
+        // Function are reusable blocks of code that perform a specific task. basically, a function is a set of statements that performs a task or calculates a value.
+        //function addNumbers(num1, num2) {
+            //7 document.getElementById("addition").innerHTML = "The sum is: " + (num1 + num2);
+
+        //    LESSON 8: PARAMETERS
+        document.getElementById("addition").innerHTML = "The sum is: " + addNumbers(5, 10); // This line calls the addNumbers function with 5 and 10 as arguments and displays the result in the paragraph with id "addition".
+        // The addNumbers function is defined below, which takes two numbers as parameters and returns their sum.
+        // A parameter is a variable in a function definition. When you call the function, you pass an argument
+        function addNumbers(num1, num2) {
+            // This function takes two numbers as parameters, adds them, and displays the result in the paragraph with id "addition".
+            return num1 + num2; // This function takes two parameters and returns their sum.
+        }
+    </script>
+</body>
+</html>

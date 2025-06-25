@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p id="outputText"></p>
+
+
+    <script>
+        // LESSON 9: VARIABLE SCOPE
+        // Variable scope refers to the visibility and accessibility of variables in different parts of your code.
+        var someVariable = 50; // This variable is declared in the global scope, so it can be accessed anywhere in the script.
+        someFunction(); // This calls the someFunction function, which will execute its code.
+        function someFunction() {
+            //var someVariable = 100; // This variable is declared inside the function, so it has local scope.
+            document.getElementById("outputText").innerHTML = "The value of someVariable is: " + someVariable;
+        }
+    </script>
+</body>
+
+</html>

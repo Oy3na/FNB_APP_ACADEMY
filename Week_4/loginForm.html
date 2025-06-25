@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login Form</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <input type="submit" value="Login" onclick="verifyUser(); return false;"> <!-- Prevent form submission -->
+        <p id="message"></p>
+        <br>
+        <a href="register.html">Don't have an account? Register here</a>
+    </form>
+
+    <script>
+        function verifyUser(){
+            var username = document.getElementById("username").value;// Get the value of the username input field
+            var password = document.getElementById("password").value;// Get the value of the password input field
+            checkCredentials(username, password); // Call the function to check credentials
+        }
+
+        function checkCredentials(username, password){
+            var systemUsername = "admin"; // Predefined username
+            var systemPassword = "password123"; // Predefined password
+
+            if(username === systemUsername && password === systemPassword){
+                document.getElementById("message").innerText = "Login successful!"; // Display success message
+                //return true; // If the entered credentials match the predefined ones, return true
+            } else {
+                document.getElementById("message").innerText = "Invalid username or password."; // Display error message
+                //return false; //If the entered credentials do not match, return false
+            }
+        }
+    </script>
+</body>
+</html>
