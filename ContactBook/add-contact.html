@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact Book</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <br />
+        <form id="editForm">
+            <label for="Firstname">First Name</label>
+            <input type="text" id="firstname" placeholder="First Name" required /> <br/>
+            <label for="Lastname">Last Name</label>
+            <input type="text" id="lastname" placeholder="Last Name" required /> <br/>
+            <label for="Mobile">Mobile</label>
+            <input type="text" id="mobile" placeholder="Mobile" required /> <br/>
+            <label for="Email">Email</label>
+            <input type="email" id="email" placeholder="Email" required /> <br/>
+            <label for="Avatar">Select a file</label>
+            <input type="file" id="avatar" accept="image/*" required /> <br/>
+            <button type="submit" id="submitForm">Save</button>
+        </form>
+        <br/>
+        <button id="homelink" type="button">Home</button>
+
+        <script src="config.js"></script>
+        <script>
+           document.getElementById("editForm").addEventListener('submit', submitForm); // Add event listener to the submit button
+           document.getElementById("homelink").addEventListener('click', homeLink); // Add event listener to the home button
+
+           function submitForm(e){ // Function to handle form submission
+               e.preventDefault() ; // Prevent the default form submission behavior, which would reload the page
+
+              const form = new FormData(document.querySelector('#editForm')); // Create a new FormData object from the form with id 'editForm'
+                form.append("apiKey", apiKey); // Append the API key to the form data, which is required for the API request
+
+                fetch(rootPath + 'controller/insert-contact/',{ // Send the form data to the server
+                    method: 'POST', // Use POST method to send data to the server
+                    headers: { // Set the headers for the request
+                        'Accept': 'application/json, *.*',},// Accept JSON responses from the server
+                    body: form // Set the body of the request to the FormData object
+                })
+                .then(function(response) { // Handle the response from the server
+                    return response.text(); // Return the response as text
+                })
+                .then(function(data) { // Process the response data
+                    if (data == "1") { // If the response is "1", it means the contact was added successfully
+                        alert("Contact added successfully!"); // Show a success message
+                        homeLink(); // Call the homeLink function to redirect to the home page
+                    } else { // If the response is not "1", it means there was an error
+                        alert(data + "Error adding contact!"); // Show an error message with the response data
+                        homeLink(); // Call the homeLink function to redirect to the home page
+                    }
+                });
+           }
+
+           function homeLink() { // Function to redirect to the home page
+               window.open("index.html", "_self"); // Open the home page in the same tab
+           }
+
+           
+        </script>
+    </body>
